@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface SettingsState {
-  apiKey: string;
+  lingoDevApiKey: string;
   theme: 'light' | 'dark';
   // 可以在這裡添加其他設定項
   // language: string;
@@ -9,7 +9,7 @@ interface SettingsState {
 }
 
 const initialState: SettingsState = {
-  apiKey: localStorage.getItem('apiKey') || '',
+  lingoDevApiKey: localStorage.getItem('lingoDevApiKey') || '',
   theme: (localStorage.getItem('theme') as 'light' | 'dark') || 'light',
 };
 
@@ -17,13 +17,13 @@ const settingsSlice = createSlice({
   name: 'settings',
   initialState,
   reducers: {
-    setApiKey: (state, action: PayloadAction<string>) => {
-      state.apiKey = action.payload;
-      localStorage.setItem('apiKey', action.payload);
+    setLingoDevApiKey: (state, action: PayloadAction<string>) => {
+      state.lingoDevApiKey = action.payload;
+      localStorage.setItem('lingoDevApiKey', action.payload);
     },
-    clearApiKey: (state) => {
-      state.apiKey = '';
-      localStorage.removeItem('apiKey');
+    clearLingoDevApiKey: (state) => {
+      state.lingoDevApiKey = '';
+      localStorage.removeItem('lingoDevApiKey');
     },
     setTheme: (state, action: PayloadAction<'light' | 'dark'>) => {
       state.theme = action.payload;
@@ -36,7 +36,7 @@ const settingsSlice = createSlice({
   },
 });
 
-export const { setApiKey, clearApiKey, setTheme } = settingsSlice.actions;
-export const selectApiKey = (state: { settings: SettingsState }) => state.settings.apiKey;
+export const { setLingoDevApiKey, clearLingoDevApiKey, setTheme } = settingsSlice.actions;
+export const selectLingoDevApiKey = (state: { settings: SettingsState }) => state.settings.lingoDevApiKey;
 export const selectTheme = (state: { settings: SettingsState }) => state.settings.theme;
 export default settingsSlice.reducer; 

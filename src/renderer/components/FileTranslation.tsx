@@ -200,6 +200,16 @@ const FileTranslation: React.FC<FileTranslationProps> = ({
     XLSX.writeFile(wb, 'translated.xlsx');
   };
 
+  const handleDownloadTemplate = () => {
+    // Ensure 'en' is always the first column, followed by other unique codes
+    const codes = languageOptions.map(lang => lang.code);
+    const header = ['en', ...codes.filter(code => code !== 'en')];
+    const ws = XLSX.utils.aoa_to_sheet([header]);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    XLSX.writeFile(wb, 'translation_template.xlsx');
+  };
+
   return (
     <>
       <Box sx={{ mb: 4 }}>
@@ -248,16 +258,24 @@ const FileTranslation: React.FC<FileTranslationProps> = ({
                 fullWidth
                 value={sourceFile}
                 placeholder={t('translationTool.sourceFile.placeholder')}
-                onClick={onFileSelect}
+                onClick={isTranslating ? undefined : onFileSelect}
                 InputProps={{
                   readOnly: true,
                   endAdornment: (
-                    <IconButton onClick={onFileSelect}>
+                    <IconButton onClick={isTranslating ? undefined : onFileSelect} disabled={isTranslating}>
                       <DescriptionIcon sx={{ color: '#21a366' }} />
                     </IconButton>
                   ),
                 }}
               />
+              <Button
+                variant="outlined"
+                startIcon={<DownloadIcon />}
+                onClick={handleDownloadTemplate}
+                disabled={isTranslating}
+              >
+                {t('translationTool.sourceFile.downloadTemplate', 'Download Template')}
+              </Button>
             </Box>
             <Typography variant="body2" color="error" sx={{ mt: 0.5 }}>
               {t('translationTool.sourceFile.xlsxOnlyWarning')}

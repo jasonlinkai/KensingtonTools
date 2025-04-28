@@ -1,12 +1,12 @@
 import { LingoDotDevEngine } from '@lingo.dev/_sdk';
 
 let lingoClient: LingoDotDevEngine | null = null;
-let currentApiKey: string | null = null;
+let currentLingoDevApiKey: string | null = null;
 
-export function setLingoApiKey(apiKey: string) {
-  if (!lingoClient || apiKey !== currentApiKey) {
-    lingoClient = new LingoDotDevEngine({ apiKey });
-    currentApiKey = apiKey;
+export function setLingoApiKey(lingoDevApiKey: string) {
+  if (!lingoClient || lingoDevApiKey !== currentLingoDevApiKey) {
+    lingoClient = new LingoDotDevEngine({ apiKey: lingoDevApiKey });
+    currentLingoDevApiKey = lingoDevApiKey;
   }
 }
 

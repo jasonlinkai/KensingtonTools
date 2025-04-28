@@ -6,10 +6,12 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectTheme, setTheme } from '../store/slices/settingsSlice';
+import { selectLingoDevApiKey } from '../store/slices/settingsSlice';
 
 const Navigation: React.FC = () => {
   const { t, i18n } = useTranslation();
   const themeMode = useSelector(selectTheme);
+  const lingoDevApiKey = useSelector(selectLingoDevApiKey);
   const dispatch = useDispatch();
 
   const handleLanguageChange = (event: SelectChangeEvent<string>) => {

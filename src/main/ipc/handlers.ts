@@ -73,9 +73,9 @@ export function registerIpcHandlers() {
   });
 
   // Lingo 設定 API Key
-  ipcMain.handle(IPC_CHANNELS.LINGO_SET_API_KEY, async (_event, apiKey) => {
+  ipcMain.handle(IPC_CHANNELS.LINGO_SET_API_KEY, async (_event, lingoDevApiKey) => {
     const { setLingoApiKey } = await import('../utils/lingo');
-    setLingoApiKey(apiKey);
+    setLingoApiKey(lingoDevApiKey);
     return true;
   });
 

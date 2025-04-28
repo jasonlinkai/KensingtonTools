@@ -49,7 +49,7 @@ export async function lingoTranslateText(text: string, targetLocale: string): Pr
   );
 }
 
-export async function lingoSetApiKey(apiKey: string): Promise<void> {
+export async function lingoSetApiKey(lingoDevApiKey: string): Promise<void> {
   const electron = (window as any).electron;
-  await electron.ipcRenderer.invoke(IPC_CHANNELS.LINGO_SET_API_KEY, apiKey);
+  await electron.ipcRenderer.invoke(IPC_CHANNELS.LINGO_SET_API_KEY, lingoDevApiKey);
 } 

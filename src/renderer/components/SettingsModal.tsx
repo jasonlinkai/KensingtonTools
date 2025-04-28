@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { setApiKey, selectApiKey } from '../store/slices/settingsSlice';
+import { setLingoDevApiKey, selectLingoDevApiKey } from '../store/slices/settingsSlice';
 
 interface SettingsModalProps {
   open: boolean;
@@ -21,11 +21,11 @@ interface SettingsModalProps {
 const SettingsModal: React.FC<SettingsModalProps> = ({ open, onClose }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const currentApiKey = useSelector(selectApiKey);
-  const [apiKey, setApiKeyInput] = useState(currentApiKey);
+  const currentLingoDevApiKey = useSelector(selectLingoDevApiKey);
+  const [lingoDevApiKey, setLingoDevApiKeyInput] = useState(currentLingoDevApiKey);
 
   const handleSave = async () => {
-    dispatch(setApiKey(apiKey.trim()));
+    dispatch(setLingoDevApiKey(lingoDevApiKey.trim()));
     onClose();
   };
 
@@ -40,8 +40,8 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ open, onClose }) => {
           <TextField
             fullWidth
             type="password"
-            value={apiKey}
-            onChange={(e) => setApiKeyInput(e.target.value)}
+            value={lingoDevApiKey}
+            onChange={(e) => setLingoDevApiKeyInput(e.target.value)}
             placeholder={t('apiKey.placeholder')}
             margin="normal"
             label={t('apiKey.label')}
@@ -67,7 +67,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ open, onClose }) => {
           onClick={handleSave} 
           variant="contained" 
           color="primary"
-          disabled={!apiKey.trim()}
+          disabled={!lingoDevApiKey.trim()}
         >
           {t('common.save')}
         </Button>

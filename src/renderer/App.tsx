@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -15,7 +15,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   </Box>
 );
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <Layout><Home /></Layout>,

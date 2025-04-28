@@ -2,11 +2,11 @@ import { LingoDotDevEngine } from '@lingo.dev/_sdk';
 
 /**
  * Create a new Lingo client instance
- * @param apiKey The API key for Lingo.dev
+ * @param lingoDevApiKey The API key for Lingo.dev
  * @returns A new LingoDotDevEngine instance
  */
-export function createLingoClient(apiKey: string): LingoDotDevEngine {
-  return new LingoDotDevEngine({ apiKey });
+export function createLingoClient(lingoDevApiKey: string): LingoDotDevEngine {
+  return new LingoDotDevEngine({ apiKey: lingoDevApiKey });
 }
 
 /**

@@ -1,0 +1,27 @@
+{
+  "appId": "com.kensington.tools",
+  "productName": "Kensington Tools",
+  "directories": {
+    "output": "release"
+  },
+  "files": [
+    "dist/**/*",
+    "package.json"
+  ],
+  "asar": true,
+  "icon": "resources/appIcon",
+  "mac": {
+    "category": "public.app-category.productivity",
+    "target": [
+      {
+        "target": "dmg",
+        "arch": ["universal"]
+      },
+      {
+        "target": "zip",
+        "arch": ["universal"]
+      }
+    ],
+    "artifactName": "${productName}-universal.${ext}"
+  }
+} 

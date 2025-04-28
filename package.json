@@ -5,11 +5,14 @@
   "main": "dist/main/main.js",
   "scripts": {
     "typescript:watch": "tsc -w",
+    "typescript:build": "tsc",
     "vite:watch": "vite",
+    "vite:build": "vite build",
     "electron:start": "cross-env NODE_ENV=development electron .",
+    "electron:build": "electron-builder",
     "start:watch": "concurrently -k \"npm run typescript:watch\" \"npm run vite:watch\"",
     "dev": "concurrently -k \"npm run start:watch\" \"wait-on tcp:5173 && npm run electron:start\"",
-    "build": "tsc && vite build && electron-builder",
+    "build": "rimraf dist && rimraf release && npm run typescript:build && npm run vite:build && npm run electron:build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -29,7 +32,8 @@
     "vite": "^4.5.2",
     "vite-plugin-electron": "^0.15.6",
     "vite-plugin-electron-renderer": "^0.14.6",
-    "wait-on": "^7.2.0"
+    "wait-on": "^7.2.0",
+    "rimraf": "^5.0.5"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
@@ -38,6 +42,7 @@
     "@mui/material": "^5.15.7",
     "@reduxjs/toolkit": "^2.1.0",
     "@types/react-router-dom": "^5.3.3",
+    "electron-log": "^5.3.4",
     "i18next": "^25.0.1",
     "i18next-browser-languagedetector": "^8.0.5",
     "lingo.dev": "^0.87.0",
@@ -48,19 +53,5 @@
     "react-router-dom": "^7.5.2",
     "tailwindcss": "^3.4.1",
     "xlsx": "^0.18.5"
-  },
-  "build": {
-    "appId": "com.kensington.translate",
-    "productName": "Kensington Tools",
-    "directories": {
-      "output": "release"
-    },
-    "files": [
-      "dist/**/*",
-      "package.json"
-    ],
-    "mac": {
-      "category": "public.app-category.productivity"
-    }
   }
 }

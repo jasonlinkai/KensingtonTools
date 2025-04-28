@@ -21,7 +21,7 @@ import { lingoTranslateText } from '../utils/ipc';
 import FileTranslation from '../components/FileTranslation';
 import TextTranslation from '../components/TextTranslation';
 import SettingsModal from '../components/SettingsModal';
-import { selectApiKey } from '../store/slices/settingsSlice';
+import { selectLingoDevApiKey } from '../store/slices/settingsSlice';
 
 const languageOptions = [
   { code: 'fr', label: 'FR' },
@@ -80,7 +80,7 @@ const pulseAndShake = keyframes`
 const TranslationTool: React.FC = () => {
   const { t } = useTranslation();
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const apiKey = useSelector(selectApiKey);
+  const lingoDevApiKey = useSelector(selectLingoDevApiKey);
   const [selectedLanguages, setSelectedLanguages] = useState<string[]>(
     languageOptions.map(lang => lang.code)
   );
@@ -95,10 +95,10 @@ const TranslationTool: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'file' | 'text'>('file');
 
   useEffect(() => {
-    if (apiKey) {
-      lingoSetApiKey(apiKey);
+    if (lingoDevApiKey) {
+      lingoSetApiKey(lingoDevApiKey);
     }
-  }, [apiKey]);
+  }, [lingoDevApiKey]);
 
   const handleInputTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const text = e.target.value;
@@ -107,7 +107,7 @@ const TranslationTool: React.FC = () => {
   };
 
   const handleTranslate = async () => {
-    if (!apiKey) {
+    if (!lingoDevApiKey) {
       setError(t('errors.noApiKey'));
       setIsSettingsOpen(true);
       return;
@@ -184,7 +184,7 @@ const TranslationTool: React.FC = () => {
     <Container maxWidth="lg">
       <Box sx={{ mt: 4, mb: 4 }}>
         {/* Title and Settings */}
-        <Box sx={{ display: 'flex', alignItems: 'center', mb: !apiKey ? 1 : 3 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', mb: !lingoDevApiKey ? 1 : 3 }}>
           <Typography variant="h4" component="h1" sx={{ flexGrow: 1 }}>
             {t('translationTool.title')}
           </Typography>
@@ -193,7 +193,7 @@ const TranslationTool: React.FC = () => {
             color="primary"
             size="large"
             sx={{
-              animation: !apiKey ? `${pulseAndShake} 2s infinite` : 'none',
+              animation: !lingoDevApiKey ? `${pulseAndShake} 2s infinite` : 'none',
               '&:hover': {
                 animation: 'none',
               },
@@ -204,7 +204,7 @@ const TranslationTool: React.FC = () => {
         </Box>
 
         {/* API Key Warning */}
-        {!apiKey && (
+        {!lingoDevApiKey && (
           <Alert 
             severity="error" 
             sx={{ 
@@ -236,8 +236,8 @@ const TranslationTool: React.FC = () => {
 
         {/* Main Content */}
         <Box sx={{ 
-          opacity: apiKey ? 1 : 0.5,
-          pointerEvents: apiKey ? 'auto' : 'none',
+          opacity: lingoDevApiKey ? 1 : 0.5,
+          pointerEvents: lingoDevApiKey ? 'auto' : 'none',
           transition: 'opacity 0.3s'
         }}>
           <Paper sx={{ p: 3 }}>
@@ -262,6 +262,7 @@ const TranslationTool: React.FC = () => {
                 onOrientationChange={(value) => setOrientation(value)}
                 onFileSelect={handleFileSelect}
                 excelData={excelData}
+                isTranslating={isTranslating}
               />
             )}
 
