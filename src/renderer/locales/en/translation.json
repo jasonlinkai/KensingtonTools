@@ -6,11 +6,11 @@
   },
   "home": {
     "title": "Home",
-    "welcome": "Welcome to Kensington Translate"
+    "welcome": "Welcome to Kensington Tools"
   },
   "about": {
     "title": "About",
-    "description": "This is an Electron-based translation tool."
+    "description": "Kensington Tools is an Electron-based productivity suite, providing translation and more tools for your workflow."
   },
   "language": {
     "en": "English",
@@ -62,7 +62,8 @@
       "xlsxOnlyWarning": "Only .xlsx Excel files are supported.",
       "sheetsFound": "{{count}} sheets found",
       "sheetInfo": "{{sheetName}}: {{rowCount}} rows, {{columnCount}} columns",
-      "startTranslation": "Start Translation"
+      "startTranslation": "Start Translation",
+      "progressDetail": "Translating: {{lang}} row {{row}}"
     },
     "textInput": {
       "title": "Translate from Text",
@@ -91,6 +92,18 @@
       "note": "(Security section; TBD)",
       "error": "Please enter a valid API key",
       "inputError": "Please enter text to translate"
+    },
+    "notify": {
+      "noFile": "Please select a file first",
+      "noSheet": "No available sheet in the file",
+      "emptySheet": "The sheet has no data",
+      "noEnColumn": "Cannot find English (en) column, please check file format",
+      "noTargetLang": "Please select at least one target language and make sure the file has corresponding language columns",
+      "translateError": "An error occurred during translation. Please try again later or check your network/API key."
     }
+  },
+  "theme": {
+    "switchToLight": "Switch to light theme",
+    "switchToDark": "Switch to dark theme"
   }
 } 

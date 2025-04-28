@@ -6,11 +6,11 @@
   },
   "home": {
     "title": "홈",
-    "welcome": "Kensington Translate에 오신 것을 환영합니다"
+    "welcome": "Kensington Tools에 오신 것을 환영합니다"
   },
   "about": {
     "title": "소개",
-    "description": "이것은 Electron 기반 번역 도구입니다."
+    "description": "Kensington Tools는 Electron 기반의 다기능 생산성 도구로, 번역 등 다양한 유용한 기능을 제공합니다."
   },
   "language": {
     "en": "English",
@@ -24,7 +24,8 @@
     "confirm": "확인",
     "copy": "복사",
     "edit": "API 키 편집",
-    "save": "API 키 저장"
+    "save": "API 키 저장",
+    "clickHere": "여기를 클릭"
   },
   "settings": {
     "title": "설정"
@@ -41,7 +42,8 @@
     "invalidApiKey": "잘못된 API 키입니다. 확인 후 다시 시도해 주세요.",
     "noApiKey": "먼저 API 키를 입력해 주세요.",
     "noInputText": "번역할 텍스트를 입력해 주세요.",
-    "translationFailed": "번역에 실패했습니다. 다시 시도해 주세요."
+    "translationFailed": "번역에 실패했습니다. 다시 시도해 주세요.",
+    "toSetApiKey": "설정 화면에서 API 키를 설정하세요."
   },
   "translationTool": {
     "title": "LLM 번역 도구",
@@ -60,7 +62,8 @@
       "xlsxOnlyWarning": "현재 .xlsx 형식의 Excel 파일만 지원합니다.",
       "sheetsFound": "{{count}}개의 시트가 발견되었습니다",
       "sheetInfo": "{{sheetName}}: {{rowCount}}행, {{columnCount}}열",
-      "startTranslation": "번역 시작"
+      "startTranslation": "번역 시작",
+      "progressDetail": "번역 중: {{lang}} {{row}}행"
     },
     "textInput": {
       "title": "텍스트에서 번역",
@@ -89,6 +92,13 @@
       "note": "(보안 섹션; 미정)",
       "error": "유효한 API 키를 입력해 주세요",
       "inputError": "번역할 텍스트를 입력해 주세요"
+    },
+    "notify": {
+      "translateError": "번역 중 오류가 발생했습니다. 잠시 후 다시 시도하거나 네트워크/API 키를 확인하세요."
     }
+  },
+  "theme": {
+    "switchToLight": "라이트 테마로 전환",
+    "switchToDark": "다크 테마로 전환"
   }
 } 

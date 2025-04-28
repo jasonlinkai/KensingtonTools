@@ -1,7 +1,7 @@
 {
-  "name": "kensington-translate",
+  "name": "kensington-tools",
   "version": "1.0.0",
-  "description": "A translation application built with Electron and React",
+  "description": "A productivity application built with Electron and React",
   "main": "dist/main/main.js",
   "scripts": {
     "typescript:watch": "tsc -w",
@@ -34,7 +34,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^7.0.2",
+    "@mui/icons-material": "^5.15.7",
     "@mui/material": "^5.15.7",
     "@reduxjs/toolkit": "^2.1.0",
     "@types/react-router-dom": "^5.3.3",
@@ -51,7 +51,7 @@
   },
   "build": {
     "appId": "com.kensington.translate",
-    "productName": "Kensington Translate",
+    "productName": "Kensington Tools",
     "directories": {
       "output": "release"
     },

@@ -7,13 +7,21 @@ import './index.css';
 import './i18n';
 import App from './App';
 import { store } from './store/store';
+import { useSelector } from 'react-redux';
+import { selectTheme } from './store/slices/settingsSlice';
 
-// 建立 Material-UI 主題
-const theme = createTheme({
-  palette: {
-    mode: 'light',
-  },
-});
+function ThemedApp() {
+  const themeMode = useSelector(selectTheme);
+  const theme = React.useMemo(() => createTheme({
+    palette: { mode: themeMode },
+  }), [themeMode]);
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <App />
+    </ThemeProvider>
+  );
+}
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -22,10 +30,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <App />
-      </ThemeProvider>
+      <ThemedApp />
     </Provider>
   </React.StrictMode>
 ); 

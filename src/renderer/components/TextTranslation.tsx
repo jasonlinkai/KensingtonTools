@@ -10,13 +10,10 @@ import {
   MenuItem,
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import type { LingoDotDevEngine } from '@lingo.dev/_sdk';
 
 interface TextTranslationProps {
   languageOptions: Array<{ code: string; label: string }>;
-  lingoClient: LingoDotDevEngine | null;
   isTranslating: boolean;
-  detectedLanguage: string | null;
   targetLanguage: string;
   inputText: string;
   translatedText: string;
@@ -27,9 +24,7 @@ interface TextTranslationProps {
 
 const TextTranslation: React.FC<TextTranslationProps> = ({
   languageOptions,
-  lingoClient,
   isTranslating,
-  detectedLanguage,
   targetLanguage,
   inputText,
   translatedText,
@@ -55,13 +50,6 @@ const TextTranslation: React.FC<TextTranslationProps> = ({
             onChange={onInputTextChange}
             placeholder={t('translationTool.textInput.placeholder')}
           />
-          {detectedLanguage && (
-            <Typography variant="body2" color="textSecondary">
-              {t('translationTool.textInput.detectedLanguage', {
-                language: detectedLanguage.toUpperCase()
-              })}
-            </Typography>
-          )}
           <Box sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
             <FormControl sx={{ minWidth: 200 }}>
               <InputLabel id="target-language-label">
@@ -83,7 +71,7 @@ const TextTranslation: React.FC<TextTranslationProps> = ({
             <Button
               variant="contained"
               onClick={onTranslate}
-              disabled={isTranslating || !lingoClient}
+              disabled={isTranslating}
             >
               {isTranslating
                 ? t('translationTool.textInput.translating')
@@ -101,9 +89,9 @@ const TextTranslation: React.FC<TextTranslationProps> = ({
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
           <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
             <Typography variant="body2" color="textSecondary" sx={{ flex: 1 }}>
-              {detectedLanguage && targetLanguage && (
+              {targetLanguage && (
                 <>
-                  {detectedLanguage.toUpperCase()} → {targetLanguage.toUpperCase()}
+                  {targetLanguage.toUpperCase()}
                 </>
               )}
             </Typography>

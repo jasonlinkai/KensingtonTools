@@ -24,7 +24,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ open, onClose }) => {
   const currentApiKey = useSelector(selectApiKey);
   const [apiKey, setApiKeyInput] = useState(currentApiKey);
 
-  const handleSave = () => {
+  const handleSave = async () => {
     dispatch(setApiKey(apiKey.trim()));
     onClose();
   };

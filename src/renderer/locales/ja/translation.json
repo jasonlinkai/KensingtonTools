@@ -6,11 +6,11 @@
   },
   "home": {
     "title": "ホーム",
-    "welcome": "Kensington Translate へようこそ"
+    "welcome": "Kensington Tools へようこそ"
   },
   "about": {
     "title": "概要",
-    "description": "これは Electron ベースの翻訳ツールです。"
+    "description": "Kensington Tools は Electron ベースの多機能生産性ツールで、翻訳など様々な便利機能を提供します。"
   },
   "language": {
     "en": "English",
@@ -24,7 +24,8 @@
     "confirm": "確認",
     "copy": "コピー",
     "edit": "API キーを編集",
-    "save": "API キーを保存"
+    "save": "API キーを保存",
+    "clickHere": "ここをクリック"
   },
   "settings": {
     "title": "設定"
@@ -41,7 +42,8 @@
     "invalidApiKey": "無効な API キーです。確認して再試行してください。",
     "noApiKey": "先に API キーを入力してください。",
     "noInputText": "翻訳するテキストを入力してください。",
-    "translationFailed": "翻訳に失敗しました。もう一度お試しください。"
+    "translationFailed": "翻訳に失敗しました。もう一度お試しください。",
+    "toSetApiKey": "設定画面でAPIキーを設定してください。"
   },
   "translationTool": {
     "title": "LLM 翻訳ツール",
@@ -60,7 +62,8 @@
       "xlsxOnlyWarning": "現在、.xlsx 形式の Excel ファイルのみ対応しています。",
       "sheetsFound": "{{count}} 個のシートが見つかりました",
       "sheetInfo": "{{sheetName}}：{{rowCount}} 行、{{columnCount}} 列",
-      "startTranslation": "翻訳を開始"
+      "startTranslation": "翻訳を開始",
+      "progressDetail": "翻訳中: {{lang}} {{row}}行目"
     },
     "textInput": {
       "title": "テキストから翻訳",
@@ -89,6 +92,18 @@
       "note": "（セキュリティセクション；未定）",
       "error": "有効な API キーを入力してください",
       "inputError": "翻訳するテキストを入力してください"
+    },
+    "notify": {
+      "noFile": "ファイルを選択してください",
+      "noSheet": "ファイルに利用可能なシートがありません",
+      "emptySheet": "シートにデータがありません",
+      "noEnColumn": "英語（en）列が見つかりません。ファイル形式を確認してください",
+      "noTargetLang": "少なくとも1つのターゲット言語を選択し、ファイルに対応する言語列があることを確認してください",
+      "translateError": "翻訳中にエラーが発生しました。後でもう一度お試しください、またはネットワーク/APIキーを確認してください。"
     }
+  },
+  "theme": {
+    "switchToLight": "ライトテーマに切り替え",
+    "switchToDark": "ダークテーマに切り替え"
   }
 } 

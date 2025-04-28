@@ -1,6 +1,7 @@
-import { ipcMain, dialog } from 'electron';
+import { ipcMain, dialog, app } from 'electron';
 import { IPC_CHANNELS } from '../../shared/constants/ipc';
 import { readExcelFile } from '../utils/excel';
+import { lingoLocalizeObject } from '../utils/lingo';
 
 // 註冊所有 IPC 處理程序
 export function registerIpcHandlers() {
@@ -43,5 +44,43 @@ export function registerIpcHandlers() {
       console.error('Error reading Excel file:', error);
       throw error;
     }
+  });
+
+  // Lingo 批次翻譯
+  ipcMain.handle(IPC_CHANNELS.LINGO_LOCALIZE_OBJECT, async (event, obj, params) => {
+    const result = await lingoLocalizeObject(
+      obj,
+      params,
+      (progress, sourceChunk, processedChunk) => {
+        console.log('[lingoLocalizeObject] Progress:', progress);
+        console.log('[lingoLocalizeObject] Source chunk:', sourceChunk);
+        console.log('[lingoLocalizeObject] Processed chunk:', processedChunk);
+        event.sender.send('lingo-localize-progress', {
+          progress,
+          sourceChunk,
+          processedChunk
+        });
+      }
+    );
+    console.log('[lingoLocalizeObject] Result:', result);
+    return result;
+  });
+
+  // Lingo 單句翻譯
+  ipcMain.handle(IPC_CHANNELS.LINGO_TRANSLATE_TEXT, async (event, text, targetLocale) => {
+    const { lingoTranslateText } = await import('../utils/lingo');
+    return await lingoTranslateText(text, targetLocale);
+  });
+
+  // Lingo 設定 API Key
+  ipcMain.handle(IPC_CHANNELS.LINGO_SET_API_KEY, async (_event, apiKey) => {
+    const { setLingoApiKey } = await import('../utils/lingo');
+    setLingoApiKey(apiKey);
+    return true;
+  });
+
+  // 系統語言
+  ipcMain.handle(IPC_CHANNELS.GET_SYSTEM_LANGUAGE, async () => {
+    return app.getLocale();
   });
 } 

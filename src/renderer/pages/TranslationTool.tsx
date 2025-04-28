@@ -3,40 +3,21 @@ import {
   Box,
   Container,
   Paper,
-  ToggleButton,
-  ToggleButtonGroup,
-  TextField,
-  Button,
-  Grid,
   Typography,
   IconButton,
   Alert,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
   Select,
   MenuItem,
-  FormControl,
-  InputLabel,
   Tabs,
   Tab,
   keyframes,
 } from '@mui/material';
-import DownloadIcon from '@mui/icons-material/Download';
-import MenuIcon from '@mui/icons-material/Menu';
-import LockIcon from '@mui/icons-material/Lock';
-import LockOpenIcon from '@mui/icons-material/LockOpen';
-import EditIcon from '@mui/icons-material/Edit';
-import SaveIcon from '@mui/icons-material/Save';
-import CancelIcon from '@mui/icons-material/Cancel';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { selectFile, selectDirectory } from '../utils/ipc';
+import { selectFile, lingoSetApiKey } from '../utils/ipc';
 import { readExcelFile, isExcelFile, ExcelData } from '../utils/excel';
-import { createLingoClient, translate, detectLanguage } from '../../config/lingo';
-import type { LingoDotDevEngine } from '@lingo.dev/_sdk';
+import { lingoTranslateText } from '../utils/ipc';
 import FileTranslation from '../components/FileTranslation';
 import TextTranslation from '../components/TextTranslation';
 import SettingsModal from '../components/SettingsModal';
@@ -108,49 +89,25 @@ const TranslationTool: React.FC = () => {
   const [inputText, setInputText] = useState<string>('');
   const [excelData, setExcelData] = useState<ExcelData | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [lingoClient, setLingoClient] = useState<LingoDotDevEngine | null>(null);
   const [isTranslating, setIsTranslating] = useState(false);
-  const [detectedLanguage, setDetectedLanguage] = useState<string | null>(null);
   const [targetLanguage, setTargetLanguage] = useState<string>('zh-TW');
   const [translatedText, setTranslatedText] = useState<string>('');
   const [activeTab, setActiveTab] = useState<'file' | 'text'>('file');
 
-  // Initialize lingoClient when apiKey changes
   useEffect(() => {
     if (apiKey) {
-      try {
-        const client = createLingoClient(apiKey);
-        setLingoClient(client);
-        setError(null);
-      } catch (err) {
-        console.error('Error creating Lingo client:', err);
-        setError(t('errors.invalidApiKey'));
-      }
-    } else {
-      setLingoClient(null);
+      lingoSetApiKey(apiKey);
     }
   }, [apiKey]);
 
-  const handleInputTextChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const text = e.target.value;
     setInputText(text);
     setTranslatedText('');
-
-    if (text.trim() && lingoClient) {
-      try {
-        const detected = await detectLanguage(lingoClient, text);
-        setDetectedLanguage(detected);
-      } catch (err) {
-        console.error('Language detection error:', err);
-        setDetectedLanguage(null);
-      }
-    } else {
-      setDetectedLanguage(null);
-    }
   };
 
   const handleTranslate = async () => {
-    if (!lingoClient) {
+    if (!apiKey) {
       setError(t('errors.noApiKey'));
       setIsSettingsOpen(true);
       return;
@@ -164,12 +121,7 @@ const TranslationTool: React.FC = () => {
     try {
       setIsTranslating(true);
       setError(null);
-      const result = await translate(
-        lingoClient,
-        inputText,
-        detectedLanguage,
-        targetLanguage
-      );
+      const result = await lingoTranslateText(inputText, targetLanguage);
       setTranslatedText(result);
     } catch (err) {
       console.error('Translation error:', err);
@@ -226,18 +178,6 @@ const TranslationTool: React.FC = () => {
       console.error('Error handling file:', err);
       setError(t('errors.fileReadError'));
     }
-  };
-
-  const handleDirectorySelect = async () => {
-    const dirPath = await selectDirectory();
-    if (dirPath) {
-      // 處理選擇的目錄
-      console.log('Selected directory:', dirPath);
-    }
-  };
-
-  const handleTabChange = (event: React.SyntheticEvent, newValue: 'file' | 'text') => {
-    setActiveTab(newValue);
   };
 
   return (
@@ -321,7 +261,6 @@ const TranslationTool: React.FC = () => {
                 orientation={orientation}
                 onOrientationChange={(value) => setOrientation(value)}
                 onFileSelect={handleFileSelect}
-                lingoClient={lingoClient}
                 excelData={excelData}
               />
             )}
@@ -329,9 +268,7 @@ const TranslationTool: React.FC = () => {
             {activeTab === 'text' && (
               <TextTranslation
                 languageOptions={languageOptions}
-                lingoClient={lingoClient}
                 isTranslating={isTranslating}
-                detectedLanguage={detectedLanguage}
                 targetLanguage={targetLanguage}
                 inputText={inputText}
                 translatedText={translatedText}

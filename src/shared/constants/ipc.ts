@@ -3,6 +3,10 @@ export const IPC_CHANNELS = {
   SELECT_FILE: 'select-file',
   SELECT_DIRECTORY: 'select-directory',
   READ_EXCEL_FILE: 'read-excel-file',
+  LINGO_LOCALIZE_OBJECT: 'lingo-localize-object',
+  LINGO_TRANSLATE_TEXT: 'lingo-translate-text',
+  LINGO_SET_API_KEY: 'lingo-set-api-key',
+  GET_SYSTEM_LANGUAGE: 'get-system-language',
 } as const;
 
 // 從 IPC_CHANNELS 物件中提取值的型別

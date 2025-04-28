@@ -6,11 +6,11 @@
   },
   "home": {
     "title": "首页",
-    "welcome": "欢迎使用 Kensington Translate"
+    "welcome": "欢迎使用 Kensington Tools"
   },
   "about": {
     "title": "关于",
-    "description": "这是一个基于 Electron 的翻译工具。"
+    "description": "Kensington Tools 是一款基于 Electron 的多功能效率工具，提供翻译等多种实用功能。"
   },
   "language": {
     "en": "English",
@@ -24,7 +24,8 @@
     "confirm": "确认",
     "copy": "复制",
     "edit": "编辑 API 密钥",
-    "save": "保存 API 密钥"
+    "save": "保存 API 密钥",
+    "clickHere": "點此"
   },
   "settings": {
     "title": "设置"
@@ -41,7 +42,8 @@
     "invalidApiKey": "无效的 API 密钥。请检查后重试。",
     "noApiKey": "请先输入 API 密钥。",
     "noInputText": "请输入要翻译的文字。",
-    "translationFailed": "翻译失败。请重试。"
+    "translationFailed": "翻译失败。请重试。",
+    "toSetApiKey": "到設定頁面設置您的 API 金鑰。"
   },
   "translationTool": {
     "title": "LLM 翻译工具",
@@ -60,7 +62,8 @@
       "xlsxOnlyWarning": "目前仅支持 xlsx 格式的 Excel 文件。",
       "sheetsFound": "共找到 {{count}} 个工作表",
       "sheetInfo": "{{sheetName}}：{{rowCount}} 行，{{columnCount}} 列",
-      "startTranslation": "开始翻译"
+      "startTranslation": "开始翻译",
+      "progressDetail": "正在翻译: {{lang}} 第{{row}}行"
     },
     "textInput": {
       "title": "从文本翻译",
@@ -89,6 +92,18 @@
       "note": "（安全性部分；待定）",
       "error": "请输入有效的 API 密钥",
       "inputError": "请输入要翻译的文字"
+    },
+    "notify": {
+      "noFile": "请先选择文件",
+      "noSheet": "文件中没有可用的工作表",
+      "emptySheet": "工作表没有数据",
+      "noEnColumn": "找不到英文(en)列，请检查文件格式",
+      "noTargetLang": "请选择至少一个目标语言，且文件需有对应语言列",
+      "translateError": "翻译过程中发生错误，请稍后再试或检查网络/API密钥"
     }
+  },
+  "theme": {
+    "switchToLight": "切換為亮色主題",
+    "switchToDark": "切換為暗色主題"
   }
 } 
