@@ -1,0 +1,66 @@
+{
+  "name": "kensington-translate",
+  "version": "1.0.0",
+  "description": "A translation application built with Electron and React",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "typescript:watch": "tsc -w",
+    "vite:watch": "vite",
+    "electron:start": "cross-env NODE_ENV=development electron .",
+    "start:watch": "concurrently -k \"npm run typescript:watch\" \"npm run vite:watch\"",
+    "dev": "concurrently -k \"npm run start:watch\" \"wait-on tcp:5173 && npm run electron:start\"",
+    "build": "tsc && vite build && electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^28.2.0",
+    "electron-builder": "^24.9.1",
+    "postcss": "^8.5.3",
+    "typescript": "^5.3.3",
+    "vite": "^4.5.2",
+    "vite-plugin-electron": "^0.15.6",
+    "vite-plugin-electron-renderer": "^0.14.6",
+    "wait-on": "^7.2.0"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^7.0.2",
+    "@mui/material": "^5.15.7",
+    "@reduxjs/toolkit": "^2.1.0",
+    "@types/react-router-dom": "^5.3.3",
+    "i18next": "^25.0.1",
+    "i18next-browser-languagedetector": "^8.0.5",
+    "lingo.dev": "^0.87.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^15.5.1",
+    "react-redux": "^9.1.0",
+    "react-router-dom": "^7.5.2",
+    "tailwindcss": "^3.4.1",
+    "xlsx": "^0.18.5"
+  },
+  "build": {
+    "appId": "com.kensington.translate",
+    "productName": "Kensington Translate",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.productivity"
+    }
+  }
+}

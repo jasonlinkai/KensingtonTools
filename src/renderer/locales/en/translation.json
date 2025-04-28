@@ -1,0 +1,96 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "translate": "Translation Tool"
+  },
+  "home": {
+    "title": "Home",
+    "welcome": "Welcome to Kensington Translate"
+  },
+  "about": {
+    "title": "About",
+    "description": "This is an Electron-based translation tool."
+  },
+  "language": {
+    "en": "English",
+    "zh": "简体中文",
+    "zh-TW": "繁體中文",
+    "ja": "日本語",
+    "ko": "한국어"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "copy": "Copy",
+    "edit": "Edit API Key",
+    "save": "Save API Key",
+    "clickHere": "Click here"
+  },
+  "settings": {
+    "title": "Settings"
+  },
+  "apiKey": {
+    "title": "API Key Settings",
+    "label": "API Key",
+    "placeholder": "Enter your API key",
+    "note": "(Security section; TBD)"
+  },
+  "errors": {
+    "invalidFileType": "Invalid file type. Please select an Excel file (.xlsx, .xls, or .csv)",
+    "fileReadError": "Error reading the file. Please try again.",
+    "invalidApiKey": "Invalid API key. Please check and try again.",
+    "noApiKey": "Please set up your API key first.",
+    "toSetApiKey": "to configure your API key in settings.",
+    "noInputText": "Please enter some text to translate.",
+    "translationFailed": "Translation failed. Please try again."
+  },
+  "translationTool": {
+    "title": "LLM Translation Tool",
+    "languageSelection": {
+      "title": "Select Target Languages",
+      "selectAll": "Select All",
+      "clearAll": "Clear"
+    },
+    "sourceFile": {
+      "title": "Translate from Source File",
+      "placeholder": "Select file",
+      "orientation": {
+        "row": "Row",
+        "column": "Column"
+      },
+      "xlsxOnlyWarning": "Only .xlsx Excel files are supported.",
+      "sheetsFound": "{{count}} sheets found",
+      "sheetInfo": "{{sheetName}}: {{rowCount}} rows, {{columnCount}} columns",
+      "startTranslation": "Start Translation"
+    },
+    "textInput": {
+      "title": "Translate from Text",
+      "placeholder": "Enter text to translate",
+      "translatedText": "Translated Text",
+      "translatedResultPlaceholder": "Translation results will be displayed here",
+      "button": "Confirm",
+      "translating": "Translating...",
+      "detectedLanguage": "Detected Language: {{language}}",
+      "targetLanguage": "Target Language",
+      "result": "Translation Result"
+    },
+    "output": {
+      "folder": {
+        "title": "Select Output Folder",
+        "button": "Select Folder"
+      },
+      "outcome": {
+        "title": "Output Result"
+      },
+      "exportExcel": "Export Translated Excel"
+    },
+    "apiKey": {
+      "title": "API Key Settings",
+      "placeholder": "XXXXX-XXX-XXXXX-XX-XXX",
+      "note": "(Security section; TBD)",
+      "error": "Please enter a valid API key",
+      "inputError": "Please enter text to translate"
+    }
+  }
+} 

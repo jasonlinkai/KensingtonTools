@@ -1,0 +1,94 @@
+{
+  "navigation": {
+    "home": "首页",
+    "about": "关于",
+    "translate": "翻译工具"
+  },
+  "home": {
+    "title": "首页",
+    "welcome": "欢迎使用 Kensington Translate"
+  },
+  "about": {
+    "title": "关于",
+    "description": "这是一个基于 Electron 的翻译工具。"
+  },
+  "language": {
+    "en": "English",
+    "zh": "简体中文",
+    "zh-TW": "繁體中文",
+    "ja": "日本語",
+    "ko": "한국어"
+  },
+  "common": {
+    "cancel": "取消",
+    "confirm": "确认",
+    "copy": "复制",
+    "edit": "编辑 API 密钥",
+    "save": "保存 API 密钥"
+  },
+  "settings": {
+    "title": "设置"
+  },
+  "apiKey": {
+    "title": "API 密钥设置",
+    "label": "API 密钥",
+    "placeholder": "请输入 API 密钥",
+    "note": "（安全性部分；待定）"
+  },
+  "errors": {
+    "invalidFileType": "文件类型错误。请选择 Excel 文件 (.xlsx, .xls 或 .csv)",
+    "fileReadError": "读取文件时发生错误。请重试。",
+    "invalidApiKey": "无效的 API 密钥。请检查后重试。",
+    "noApiKey": "请先输入 API 密钥。",
+    "noInputText": "请输入要翻译的文字。",
+    "translationFailed": "翻译失败。请重试。"
+  },
+  "translationTool": {
+    "title": "LLM 翻译工具",
+    "languageSelection": {
+      "title": "选择目标翻译语言",
+      "selectAll": "全选",
+      "clearAll": "清除"
+    },
+    "sourceFile": {
+      "title": "从源文件翻译",
+      "placeholder": "选择文件",
+      "orientation": {
+        "row": "行",
+        "column": "列"
+      },
+      "xlsxOnlyWarning": "目前仅支持 xlsx 格式的 Excel 文件。",
+      "sheetsFound": "共找到 {{count}} 个工作表",
+      "sheetInfo": "{{sheetName}}：{{rowCount}} 行，{{columnCount}} 列",
+      "startTranslation": "开始翻译"
+    },
+    "textInput": {
+      "title": "从文本翻译",
+      "placeholder": "请输入要翻译的文字",
+      "translatedText": "翻译后的文字",
+      "translatedResultPlaceholder": "这里会显示翻译结果",
+      "button": "确定",
+      "translating": "翻译中...",
+      "detectedLanguage": "检测到的语言：{{language}}",
+      "targetLanguage": "目标语言",
+      "result": "翻译结果"
+    },
+    "output": {
+      "folder": {
+        "title": "选择输出文件夹",
+        "button": "选择文件夹"
+      },
+      "outcome": {
+        "title": "输出结果"
+      },
+      "exportExcel": "导出翻译后 Excel"
+    },
+    "apiKey": {
+      "title": "API 密钥设置",
+      "placeholder": "XXXXX-XXX-XXXXX-XX-XXX",
+      "note": "（安全性部分；待定）",
+      "error": "请输入有效的 API 密钥",
+      "inputError": "请输入要翻译的文字"
+    }
+  }
+} 

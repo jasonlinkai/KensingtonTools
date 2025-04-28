@@ -1,0 +1,94 @@
+{
+  "navigation": {
+    "home": "홈",
+    "about": "소개",
+    "translate": "번역 도구"
+  },
+  "home": {
+    "title": "홈",
+    "welcome": "Kensington Translate에 오신 것을 환영합니다"
+  },
+  "about": {
+    "title": "소개",
+    "description": "이것은 Electron 기반 번역 도구입니다."
+  },
+  "language": {
+    "en": "English",
+    "zh": "简体中文",
+    "zh-TW": "繁體中文",
+    "ja": "日本語",
+    "ko": "한국어"
+  },
+  "common": {
+    "cancel": "취소",
+    "confirm": "확인",
+    "copy": "복사",
+    "edit": "API 키 편집",
+    "save": "API 키 저장"
+  },
+  "settings": {
+    "title": "설정"
+  },
+  "apiKey": {
+    "title": "API 키 설정",
+    "label": "API 키",
+    "placeholder": "API 키를 입력하세요",
+    "note": "(보안 섹션; 미정)"
+  },
+  "errors": {
+    "invalidFileType": "파일 형식이 잘못되었습니다. Excel 파일(.xlsx, .xls 또는 .csv)을 선택하세요",
+    "fileReadError": "파일을 읽는 중 오류가 발생했습니다. 다시 시도해 주세요.",
+    "invalidApiKey": "잘못된 API 키입니다. 확인 후 다시 시도해 주세요.",
+    "noApiKey": "먼저 API 키를 입력해 주세요.",
+    "noInputText": "번역할 텍스트를 입력해 주세요.",
+    "translationFailed": "번역에 실패했습니다. 다시 시도해 주세요."
+  },
+  "translationTool": {
+    "title": "LLM 번역 도구",
+    "languageSelection": {
+      "title": "대상 번역 언어 선택",
+      "selectAll": "전체 선택",
+      "clearAll": "전체 해제"
+    },
+    "sourceFile": {
+      "title": "소스 파일에서 번역",
+      "placeholder": "파일 선택",
+      "orientation": {
+        "row": "행",
+        "column": "열"
+      },
+      "xlsxOnlyWarning": "현재 .xlsx 형식의 Excel 파일만 지원합니다.",
+      "sheetsFound": "{{count}}개의 시트가 발견되었습니다",
+      "sheetInfo": "{{sheetName}}: {{rowCount}}행, {{columnCount}}열",
+      "startTranslation": "번역 시작"
+    },
+    "textInput": {
+      "title": "텍스트에서 번역",
+      "placeholder": "번역할 텍스트를 입력하세요",
+      "translatedText": "번역된 텍스트",
+      "translatedResultPlaceholder": "여기에 번역 결과가 표시됩니다",
+      "button": "확인",
+      "translating": "번역 중...",
+      "detectedLanguage": "감지된 언어: {{language}}",
+      "targetLanguage": "대상 언어",
+      "result": "번역 결과"
+    },
+    "output": {
+      "folder": {
+        "title": "출력 폴더 선택",
+        "button": "폴더 선택"
+      },
+      "outcome": {
+        "title": "출력 결과"
+      },
+      "exportExcel": "번역된 Excel 내보내기"
+    },
+    "apiKey": {
+      "title": "API 키 설정",
+      "placeholder": "XXXXX-XXX-XXXXX-XX-XXX",
+      "note": "(보안 섹션; 미정)",
+      "error": "유효한 API 키를 입력해 주세요",
+      "inputError": "번역할 텍스트를 입력해 주세요"
+    }
+  }
+} 
