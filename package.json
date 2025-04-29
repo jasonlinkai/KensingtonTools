@@ -12,7 +12,10 @@
     "electron:build": "electron-builder",
     "start:watch": "concurrently -k \"npm run typescript:watch\" \"npm run vite:watch\"",
     "dev": "concurrently -k \"npm run start:watch\" \"wait-on tcp:5173 && npm run electron:start\"",
-    "build": "rimraf dist && rimraf release && npm run typescript:build && npm run vite:build && npm run electron:build",
+    "build:win": "npm run electron:build -- --win",
+    "build:mac": "npm run electron:build -- --mac",
+    "build-all:win": "rimraf dist && rimraf release && npm run typescript:build && npm run vite:build && npm run build:win",
+    "build-all:mac": "rimraf dist && rimraf release && npm run typescript:build && npm run vite:build && npm run build:mac",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

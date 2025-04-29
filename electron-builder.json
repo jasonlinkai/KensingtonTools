@@ -6,7 +6,8 @@
   },
   "files": [
     "dist/**/*",
-    "package.json"
+    "package.json",
+    "resources/**/*"
   ],
   "asar": true,
   "icon": "resources/appIcon",
@@ -23,5 +24,14 @@
       }
     ],
     "artifactName": "${productName}-universal.${ext}"
+  },
+  "win": {
+    "target": [
+      {
+        "target": "msi",
+        "arch": ["x64"]
+      }
+    ],
+    "artifactName": "${productName}-setup-${version}.${ext}"
   }
 } 

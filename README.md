@@ -17,5 +17,6 @@ npm run dev
 To create a production build:
 
 ```bash
-npm run build
+npm run build-all:win
+npm run build-all:mac
 ```
