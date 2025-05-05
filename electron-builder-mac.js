@@ -32,15 +32,6 @@ module.exports = {
     identity: `${process.env.APPLE_TEAM_NAME} (${process.env.APPLE_TEAM_ID})`,
     notarize: {
       teamId: process.env.APPLE_TEAM_ID,
-    },
+    }
   },
-  win: {
-    target: [
-      {
-        target: "msi",
-        arch: ["x64"]
-      }
-    ],
-    artifactName: "${productName}-setup-${version}.${ext}"
-  }
 }; 
