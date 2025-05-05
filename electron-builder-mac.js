@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+const packageJson = require('./package.json');
 /**
  * @type {import('electron-builder').Configuration}
  */
@@ -16,6 +16,11 @@ module.exports = {
   ],
   asar: true,
   icon: "resources/appIcon",
+  extraMetadata: {
+    version: packageJson.version || process.env.APP_VERSION,
+    author: { name: 'Kensington, a division of ACCO BRANDS', email: 'support@kensington.com' },
+    description: "LLM translation tool",
+  },
   mac: {
     category: "public.app-category.productivity",
     target: [
